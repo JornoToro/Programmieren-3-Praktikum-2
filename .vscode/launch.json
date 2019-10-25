@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ElderlyMain",
+            "request": "launch",
+            "mainClass": "Aufgabe2.ElderlyMain",
+            "projectName": "Programmieren-3-Praktikum-2_76a8f691"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Aufgabe1",
             "request": "launch",
             "mainClass": "Aufgabe1"

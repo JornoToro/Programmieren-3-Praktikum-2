@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Verwaltungssoftware zur Zuordnung von Autokennzeichen auf einen Besitzer.
@@ -126,19 +127,12 @@ public class LicenceAdministration {
         List<String> olderCars = new ArrayList<String>();
 
         if (beforeYear != 0) {
-            Iterator<Entry<String, Car>> iterator = platesToCar.entrySet().iterator();
-
-            while (iterator.hasNext()) {
-                Map.Entry<String, Car> pair = (Map.Entry<String, Car>) iterator.next();
-                if (pair.getValue() != null) {
-                    int buildingYear = pair.getValue().getBuildingYear();
-                    if (buildingYear < beforeYear) {
-                        olderCars.add(pair.getKey());
-                    }
-                }
-            }
+           olderCars = platesToCar.entrySet().stream()
+                .filter(x -> x.getValue().getBuildingYear() < beforeYear)
+                .map(map -> map.getKey())
+                .sorted()
+                .collect(Collectors.toList());
         }
-        Collections.sort(olderCars);
         return olderCars;
     }
 

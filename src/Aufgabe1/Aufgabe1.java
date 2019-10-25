@@ -1,4 +1,4 @@
-package src.Aufgabe1;
+package src.aufgabe1;
 
 import java.util.ArrayList;
 import java.util.Arrays;

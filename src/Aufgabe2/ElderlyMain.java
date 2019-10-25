@@ -1,4 +1,4 @@
-package src.Aufgabe2;
+package src.aufgabe2;
 
 import java.util.ArrayList;
 import java.util.Comparator;

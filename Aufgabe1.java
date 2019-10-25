@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Aufgabe1
@@ -12,12 +13,14 @@ public class Aufgabe1 {
         long count = strings.stream()
             .filter(low -> low.matches(""))
             .count();
-        System.out.println(count);
 
-        strings.stream()
-            .filter(low -> low.length() > 1)
-            .filter(low -> low.length() / 2 == 0);
+        List<String> result = strings.stream()
+            .filter(low -> low.length() % 2 == 0 && low.length() > 1)
+            .collect(Collectors.toList());
 
-        System.out.println(strings);
+        System.out.println(count + " " + result);
+
+
+        
     }
 }

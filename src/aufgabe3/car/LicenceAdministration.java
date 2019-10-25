@@ -102,17 +102,10 @@ public class LicenceAdministration {
         List<String> allLicences = new ArrayList<String>();
 
         if (owner != null) {
-            Iterator<Entry<String, Car>> iterator = platesToCar.entrySet().iterator();
-
-            while (iterator.hasNext()) {
-                Map.Entry<String, Car> pair = (Map.Entry<String, Car>) iterator.next();
-                if (pair.getValue() != null) {
-                    String currentOwner = pair.getValue().getOwner();
-                    if (currentOwner.equals(owner)) {
-                        allLicences.add(pair.getKey());
-                    }
-                }
-            }
+            allLicences = platesToCar.entrySet().stream()
+                .filter(x -> x.getValue().getOwner().equals(owner))
+                .map(map -> map.getKey())
+                .collect(Collectors.toList());
         }
         return allLicences;
     }

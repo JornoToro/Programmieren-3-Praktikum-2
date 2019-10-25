@@ -4,6 +4,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - Aufgabe1",
             "request": "launch",
+            "mainClass": "src.Aufgabe1.Aufgabe1",
+            "projectName": "Programmieren-3-Praktikum-2_76a8f691"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Aufgabe1",
+            "request": "launch",
             "mainClass": "Aufgabe1.Aufgabe1",
             "projectName": "Programmieren-3-Praktikum-2_76a8f691"
         },

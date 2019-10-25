@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Aufgabe1
@@ -23,9 +24,9 @@ public class Aufgabe1 {
         System.out.println(count + " " + result);
 
         //////////////////////////////////////////////////////////
-
+        
         List<Double> randomNumbers = new ArrayList<Double>();
-        for(int i = 0; i < 10; i++){
+         for(int i = 0; i < 10; i++){
             randomNumbers.add(Math.random());
         }
 
@@ -35,5 +36,18 @@ public class Aufgabe1 {
             .collect(Collectors.toList());
 
         System.out.println("Randoms: " + randomNumbers);
+
+        /* 
+        !Geht nur für Ints?!
+        List<Integer> randomNumbers2 = new ArrayList<Integer>();
+        randomNumbers2 = Stream
+            .iterate(0, n -> n + 1)
+            .limit(10)
+            .map(k-> k = (int)(Math.random()*100))
+            .sorted().
+            collect(Collectors.toList());
+
+        System.out.println(randomNumbers2); 
+        */
     }
 }

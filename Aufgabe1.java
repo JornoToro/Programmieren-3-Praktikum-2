@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -20,7 +22,18 @@ public class Aufgabe1 {
 
         System.out.println(count + " " + result);
 
+        //////////////////////////////////////////////////////////
 
-        
+        List<Double> randomNumbers = new ArrayList<Double>();
+        for(int i = 0; i < 10; i++){
+            randomNumbers.add(Math.random());
+        }
+
+        randomNumbers = randomNumbers.stream()
+            .map(k->k*=100)
+            .sorted()
+            .collect(Collectors.toList());
+
+        System.out.println("Randoms: " + randomNumbers);
     }
 }

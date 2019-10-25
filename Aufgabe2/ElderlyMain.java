@@ -1,6 +1,7 @@
 package Aufgabe2;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +12,19 @@ import java.util.stream.Collectors;
  * @version 2019-10-13
  */
 public class ElderlyMain {
+
+    public static ElderlyPeople getBestLongDistanceHopper(List<ElderlyPeople> elderly){
+        elderly = getOlderSeventy(elderly);
+        ElderlyPeople bestHopper;
+
+        Comparator<ElderlyPeople> longJumpComparator = Comparator.comparingDouble(ElderlyPeople::getLongJumpDistance);
+        elderly.sort(longJumpComparator);
+        bestHopper = elderly.get(elderly.size()-1);
+
+        return bestHopper;
+    }
+
+
     public static List<ElderlyPeople> getOlderSeventy (List<ElderlyPeople> elderly){
         elderly = elderly.stream()
             .filter(k -> k.getAge() > 70 && k.getLongJumpDistance() > 1.5)
@@ -30,7 +44,10 @@ public class ElderlyMain {
     List<ElderlyPeople> olderSeventyelderlys = new ArrayList<>();
     olderSeventyelderlys = getOlderSeventy(elderly);
 
-    System.out.println(olderSeventyelderlys);
+    System.out.println("Older Than Seventy List: " + olderSeventyelderlys);
+
+    ////////////////////////////////////////////////
+    System.out.println("Best Hopper: " + getBestLongDistanceHopper(elderly));
     }
 
 }

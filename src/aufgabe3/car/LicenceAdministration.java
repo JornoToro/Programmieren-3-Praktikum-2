@@ -1,7 +1,6 @@
 package src.aufgabe3.car;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -102,8 +101,10 @@ public class LicenceAdministration {
         List<String> allLicences = new ArrayList<String>();
 
         if (owner != null) {
-            allLicences = platesToCar.entrySet().stream().filter(x -> x.getValue().getOwner().equals(owner))
-                    .map(map -> map.getKey()).collect(Collectors.toList());
+            allLicences = platesToCar.entrySet().stream()
+                .filter(x -> x.getValue().getOwner().equals(owner))
+                .map(map -> map.getKey())
+                .collect(Collectors.toList());
         }
         return allLicences;
     }
@@ -118,8 +119,11 @@ public class LicenceAdministration {
         List<String> olderCars = new ArrayList<String>();
 
         if (beforeYear != 0) {
-            olderCars = platesToCar.entrySet().stream().filter(x -> x.getValue().getBuildingYear() < beforeYear)
-                    .map(map -> map.getKey()).sorted().collect(Collectors.toList());
+            olderCars = platesToCar.entrySet().stream()
+                .filter(x -> x.getValue().getBuildingYear() < beforeYear)
+                .map(map -> map.getKey())
+                .sorted()
+                .collect(Collectors.toList());
         }
         return olderCars;
     }

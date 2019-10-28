@@ -102,10 +102,8 @@ public class LicenceAdministration {
         List<String> allLicences = new ArrayList<String>();
 
         if (owner != null) {
-            allLicences = platesToCar.entrySet().stream()
-                .filter(x -> x.getValue().getOwner().equals(owner))
-                .map(map -> map.getKey())
-                .collect(Collectors.toList());
+            allLicences = platesToCar.entrySet().stream().filter(x -> x.getValue().getOwner().equals(owner))
+                    .map(map -> map.getKey()).collect(Collectors.toList());
         }
         return allLicences;
     }
@@ -120,11 +118,8 @@ public class LicenceAdministration {
         List<String> olderCars = new ArrayList<String>();
 
         if (beforeYear != 0) {
-           olderCars = platesToCar.entrySet().stream()
-                .filter(x -> x.getValue().getBuildingYear() < beforeYear)
-                .map(map -> map.getKey())
-                .sorted()
-                .collect(Collectors.toList());
+            olderCars = platesToCar.entrySet().stream().filter(x -> x.getValue().getBuildingYear() < beforeYear)
+                    .map(map -> map.getKey()).sorted().collect(Collectors.toList());
         }
         return olderCars;
     }
@@ -136,17 +131,11 @@ public class LicenceAdministration {
      * @param year ein Herstellungsjahr.
      */
     public void keepLicenceNewerThan(int year) {
-        Iterator<Entry<String, Car>> iterator = platesToCar.entrySet().iterator();
-
-        while (iterator.hasNext()) {
-            Map.Entry<String, Car> pair = (Map.Entry<String, Car>) iterator.next();
-            if (pair.getValue() != null) {
-                int buildingYear = pair.getValue().getBuildingYear();
-                if (buildingYear < year) {
-                    platesToCar.remove(pair.getKey());
-                    break;
-                }
-            }
+        if (!platesToCar.isEmpty()) {
+            platesToCar = platesToCar.entrySet().stream()
+                .filter(x -> x.getValue()
+                .getBuildingYear() > year)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         }
     }
 

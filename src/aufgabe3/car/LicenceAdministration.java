@@ -42,12 +42,12 @@ public class LicenceAdministration {
      * @throw IllegalArgumentException, falls das Auto bereits registriert ist.
      */
     public void register(String licence, Car car) {
-        Iterator<Entry<String, Car>> iterator = platesToCar.entrySet().iterator();
+        final Iterator<Entry<String, Car>> iterator = platesToCar.entrySet().iterator();
         if (platesToCar.isEmpty()) {
             platesToCar.put(licence, car);
         } else {
             while (iterator.hasNext()) {
-                Map.Entry<String, Car> pair = (Map.Entry<String, Car>) iterator.next();
+                final Map.Entry<String, Car> pair = (Map.Entry<String, Car>) iterator.next();
                 if (pair.getValue() != null && !(pair.getValue().equals(car))) {
                     platesToCar.put(requireValidLicencePlate(licence), car);
                 }
@@ -82,7 +82,7 @@ public class LicenceAdministration {
      * @return die unveraenderliche Menge aller Autokennzeichen.
      */
     public Set<String> getLicencePlates() {
-        Set<String> allPlates = new HashSet<String>();
+        final Set<String> allPlates = new HashSet<String>();
 
         for (String key : platesToCar.keySet()) {
             allPlates.add(key);

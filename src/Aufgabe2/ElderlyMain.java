@@ -15,15 +15,20 @@ import java.util.stream.Collectors;
  */
 public class ElderlyMain {
 
+    /**
+     * Method for get the longest Hopper.
+     * @param elderly List of elderly people
+     * @return besHopper get the best Hopper in eldery people
+     */
     public static ElderlyPeople getBestLongDistanceHopper(List<ElderlyPeople> elderly) {
-        elderly = getOlderSeventy(elderly);
-        if (!elderly.isEmpty()) {
-            ElderlyPeople bestHopper;
+        final List<ElderlyPeople> oldElderly = getOlderSeventy(elderly);
+        if (!oldElderly.isEmpty()) {
+            final ElderlyPeople bestHopper;
 
-            Comparator<ElderlyPeople> longJumpComparator = Comparator
+            final Comparator<ElderlyPeople> longJumpComparator = Comparator
                     .comparingDouble(ElderlyPeople::getLongJumpDistance);
-            elderly.sort(longJumpComparator);
-            bestHopper = elderly.get(elderly.size() - 1);
+            oldElderly.sort(longJumpComparator);
+            bestHopper = oldElderly.get(oldElderly.size() - 1);
 
             return bestHopper;
         } else {
@@ -32,16 +37,22 @@ public class ElderlyMain {
 
     }
 
+    /**
+     * Method for get people older seventy.
+     * @param elderly List of elderly people
+     * @return elderys over seventy
+     */
     public static List<ElderlyPeople> getOlderSeventy(List<ElderlyPeople> elderly) {
-        elderly = elderly.stream().filter(k -> k.getAge() > 70 && k.getLongJumpDistance() > 1.5)
+        final List<ElderlyPeople> oldElderly = elderly.stream()
+                .filter(k -> k.getAge() > 70 && k.getLongJumpDistance() > 1.5)
                 .collect(Collectors.toList());
-        return elderly;
+        return oldElderly;
 
     }
 
     public static void main(String... args) {
 
-        List<ElderlyPeople> elderly = new ArrayList<>();
+        final List<ElderlyPeople> elderly = new ArrayList<>();
 
         elderly.add(new ElderlyPeople("Hubert", 83, 1.25));
         elderly.add(new ElderlyPeople("Maria", 79, 1.11));

@@ -87,7 +87,6 @@ public class LicenceAdministration {
         for (String key : platesToCar.keySet()) {
             allPlates.add(key);
         }
-
         return allPlates;
     }
 
@@ -159,5 +158,4 @@ public class LicenceAdministration {
             throw new IllegalArgumentException("no valid plate");
         }
     }
-
 }

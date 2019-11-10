@@ -34,7 +34,6 @@ public class ElderlyMain {
         } else {
             throw new IllegalArgumentException("Liste leer : Es ist keiner weiter als 1.5 gesprungen!");
         }
-
     }
 
     /**
@@ -47,7 +46,6 @@ public class ElderlyMain {
                 .filter(k -> k.getAge() > 70 && k.getLongJumpDistance() > 1.5)
                 .collect(Collectors.toList());
         return oldElderly;
-
     }
 
     public static void main(String... args) {
@@ -63,7 +61,6 @@ public class ElderlyMain {
         olderSeventyelderlys = getOlderSeventy(elderly);
 
         System.out.println("Older Than Seventy List: " + olderSeventyelderlys);
-
         ////////////////////////////////////////////////
         System.out.println("Best Hopper: " + getBestLongDistanceHopper(elderly));
     }
